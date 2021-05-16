@@ -1,0 +1,14 @@
+     
+                <div class='title-center' *ngIf="message"
+                  [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success',
+                 'alert-danger': message.type === 'error' }">
+                       {{message.text}}
+                 
+                       <button mat-button matSuffix mat-icon-button aria-label="Clear"(click)="clearAlert()">
+                        <mat-icon>close</mat-icon>
+                          </button>
+                        
+                 </div>
+             
+            
+      

@@ -1,0 +1,41 @@
+
+<div fxLayout="column" fxLayout.md="column" fxLayout.sm="column" fxLayout.xs="column"  fxLayoutGap="5%" fxLayoutAlign="center center">
+
+<div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>  {{film.name}}</mat-card-title>
+        <mat-card-subtitle>  {{film.country}}</mat-card-subtitle>
+        <!-- <p-rating  readonly="true" stars="5" [cancel]="false"></p-rating> -->
+      </mat-card-header>
+      <img mat-card-image src="{{film.photo}}" alt="film.name">
+
+      <mat-card-content>
+
+        <p>
+         Ticket Price:  {{film.ticketPrice}}
+        </p>
+        <div class="p-text-justify" style="width: 20rem">{{film.description}}</div>
+
+
+      </mat-card-content>
+
+      <mat-card-actions>
+        <!-- <a [routerLink]="['/film', film.id]">
+          <button  mat-raised-button color="primary" >View</button>
+        </a> -->
+        <app-comment   [film]="film"
+        ></app-comment>
+        <!-- <button  mat-raised-button color="primary"  >comment</button> -->
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div>
+
+    </div>
+
+
+<br>
+
+</div>

@@ -1,0 +1,87 @@
+
+<div class="film" fxLayout="row" fxLayout.md="row" fxLayout.sm="column" fxLayout.xs="column"  fxLayoutGap="5%" fxLayoutAlign="space-around center">
+
+
+    <mat-card fxFlex='50'  class="register-matcard">
+      <mat-progress-bar mode="query" *ngIf="loading"></mat-progress-bar>
+
+      <br>
+
+
+
+      <h3 class="title-center"> Sign up</h3>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field  appearance="outline" class="full-width">
+            <mat-label>Full Name</mat-label>
+          <input matInput placeholder=" Full Name" [formControl]="name" required>
+          <mat-error *ngIf="name.hasError('required')"> full name is required</mat-error>
+          <mat-error *ngIf="name.hasError('minlength') && !name.hasError('required')">
+            name Must be at least 6 letters</mat-error>
+          <mat-error *ngIf="name.hasError('maxlength')">
+            name with more than 40 characters.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+          <input matInput placeholder="Enter your email" [formControl]="email" required>
+          <mat-error *ngIf="email.hasError('required')"> Email is Required</mat-error>
+          <mat-error *ngIf="!email.hasError('required') && email.hasError('email')"> A Valid Email is Required</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+          <input matInput placeholder="Enter your Password" [formControl]="password" [type]="hide ? 'text' : 'password'">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+
+          <mat-error *ngIf="password.hasError('required')">
+            Password Required
+          </mat-error>
+          <mat-error *ngIf="password.hasError('minlength') && !password.hasError('required')">
+            Password Must be at least 6 letters</mat-error>
+          <mat-error *ngIf="password.hasError('maxlength') && !password.hasError('required')">
+            Password with more than 24 characters.
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>verify Password</mat-label>
+          <input matInput placeholder="verify your Password" [formControl]="verifyPassword"
+            [type]="hide ? 'text' : 'password'">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <mat-error *ngIf="verifyPassword.hasError('required')">
+            verify Password Required
+          </mat-error>
+
+          <mat-error *ngIf="verifyPassword.hasError('mustMatch') && !verifyPassword.hasError('required')">
+            Password Do not Match
+          </mat-error>
+        </mat-form-field>
+
+        <!-- put buttons here -->
+
+
+        <div class="example-button-row">
+          <button class="full-width" type="submit" mat-raised-button color="primary"
+            [disabled]="loading">Register</button>
+        </div>
+
+
+
+
+      </form>
+      <br>
+        Login if you are already registered
+        <br>
+      <a mat-raised-button color="primary" class="primary" routerLink="/auth/login" >login</a>
+        <!-- <button color="primary" class="full-width" type="submit" mat-raised-button color="primary"
+        [disabled]="loading">Login</button>
+     -->
+     <br>
+    </mat-card>
+
+  </div>

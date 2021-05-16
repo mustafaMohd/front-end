@@ -1,0 +1,25 @@
+
+  /* .mat-toolbar.mat-primary {
+    background:    #4267b2;
+    color: #fff;
+  }
+   */
+   
+  
+  .mat-toolbar a.active {
+   background: #5367da;
+}
+
+
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+.mat-menu-item:hover {
+  background: #d2d7f8;
+
+}
+/* .mat-button :hover{
+background: #283593;
+} */

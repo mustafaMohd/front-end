@@ -1,0 +1,67 @@
+
+
+
+<mat-progress-bar mode="query" *ngIf="loading"></mat-progress-bar>
+<p-table [columns]="cols" [value]="films" selectionMode="multiple" >
+ <ng-template pTemplate="caption">
+   <div style="text-align:left">
+    <button type="button" pButton label="Add New Movie"
+     icon="pi pi-user-plus" (click)="showDialogToAdd()" label="Add"></button>
+</div>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+          <th *ngFor="let col of columns" >
+              {{col.header}}
+
+          </th>
+          <th>Actions</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [pSelectableRow]="rowData">
+        <td>
+          <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+      </td>
+        <td *ngFor="let col of columns">
+              {{rowData[col.field]}}
+          </td>
+          <td>
+
+            <div class="ui-inputgroup">
+              <button pButton type="button" icon="pi pi-user-edit" label="Edit" (click)="showDialogToEdit(rowData)"class="ui-button-success"></button>
+              <button pButton type="button" icon="pi pi-trash" label="Delete" (click)="DeleteFilm(rowData)" class="ui-button-danger"></button>
+
+          </div>
+        </td>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="summary" let-rowData>
+      <div style="text-align:left">
+        <button pButton type="button" icon="pi pi-user-edit" label="Comment" (click)="showDialogToComment(rowData)"class="ui-button-success"></button>
+      </div>
+  </ng-template>
+
+
+</p-table>
+
+<mat-paginator [length]="totalFilms"
+[pageSize]="_pageSize"
+
+[showFirstLastButtons]="true"
+(page)="goToPage($event)"
+[pageIndex]="0"
+*ngIf="totalFilms > 0">
+</mat-paginator>
+
+
+  <create-film  (displayNewDialogChange)="onDialogClose($event)"
+    [displayNewDialog]="displayNewDialog"></create-film>
+  <div>
+  <edit-film    [filmSubject]="filmSubject"   (displayEditDialogChange)="onDialogClose($event)"
+    [displayEditDialog]="displayEditDialog"></edit-film>
+  </div>
+  <!-- <div>
+    <app-comment   [filmSubject]="filmSubject"   (displayCommentDialogChange)="onDialogClose($event)"
+      [displayCommentDialog]="displayCommentDialog"></app-comment>
+    </div> -->

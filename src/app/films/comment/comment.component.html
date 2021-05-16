@@ -1,0 +1,24 @@
+
+
+
+
+
+  <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>comment</mat-label>
+      <input matInput placeholder="comment" [formControl]="comment" required>
+      <mat-error *ngIf="comment.hasError('required')"> comment is required</mat-error>
+      <mat-error *ngIf="comment.hasError('minlength') && !comment.hasError('required')">
+        comment Must be at least 6 letters</mat-error>
+      <mat-error *ngIf="comment.hasError('maxlength')">
+        description with more than 40 characters.
+      </mat-error>
+    </mat-form-field>
+
+
+    <div class="example-button-row">
+      <button class="full-width" type="submit" mat-raised-button color="primary" [disabled]="loading">Comment </button>
+    </div>
+  </form>

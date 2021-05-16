@@ -1,0 +1,48 @@
+<mat-toolbar  color="primary">
+  
+     <a mat-button text-center routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon class="example-icon">home</mat-icon>&nbsp;{{title}}
+      </a>
+        
+    <span class="example-fill-remaining-space"></span>
+    
+    <div *ngIf="currentUser">
+        <button  mat-raised-button color ='accent'[matMenuTriggerFor]="menu">{{currentUser.fullname}}
+            <i class="material-icons">
+                expand_more
+                </i></button>
+        <mat-menu  #menu="matMenu">
+          
+        
+          <button mat-menu-item (click)="onProfile()">Profile <i class="material-icons">
+account_circle
+</i></button>
+<button  mat-menu-item (click)="onLogout()">Logout <i class="material-icons">
+  settings_power
+  </i></button>
+<!--           
+          <button >
+           <a  routerLink="/auth/profile" >Profile settings</a>
+         
+          </button>     
+           -->
+        </mat-menu>
+    
+      <!-- <button mat-stroked-button (click)="onLogout()">Logout</button>
+        &nbsp;
+        <a mat-button  routerLink="/auth/profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{currentUser.fullname}}</a> -->
+      </div>
+    
+      <div *ngIf="!currentUser">
+        <!-- <a  mat-button    routerLink="/auth/register" 
+        routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Register <i class="material-icons">
+            add_circle_outline
+            </i></a>
+        &nbsp; -->
+        <a  mat-button   routerLink='/auth/login' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Sign
+          in <i class="material-icons">
+              lock_open
+              </i></a>
+      </div>
+    
+  </mat-toolbar>

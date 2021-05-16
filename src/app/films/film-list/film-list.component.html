@@ -1,0 +1,105 @@
+
+
+
+    <div fxLayout="column" fxLayout.md="column" fxLayout.sm="column" fxLayout.xs="column"  fxLayoutGap="5%" fxLayoutAlign="space-around center">
+
+  <div *ngFor="let film of films;" >
+  <div >
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>  {{film.name}}</mat-card-title>
+        <mat-card-subtitle>  {{film.country}}</mat-card-subtitle>
+        <!-- <p-rating  readonly="true" stars="5" [cancel]="false"></p-rating> -->
+      </mat-card-header>
+      <img  mat-card-image src="{{film.photo}}" alt="film.name">
+
+      <mat-card-content>
+
+        <p>
+         Ticket Price:  {{film.ticketPrice}}
+        </p>
+        <p>
+          Ticket Price:  {{film.id}}
+         </p>
+
+      </mat-card-content>
+
+      <mat-card-actions>
+        <a [routerLink]="['/film', film.id]">
+          <button  mat-raised-button color="primary" >View</button>
+        </a>
+
+        <button  mat-raised-button color="primary"  >comment</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</div>
+
+
+<br>
+
+</div>
+<!-- <div class="card">
+  <p-dataView #dv [value]="films"
+       layout="grid">
+
+
+       <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+
+       <ng-template let-film pTemplate="gridItem">
+          <div class="p-col-12 p-md-4">
+              <div class="film-grid-item card">
+                  <div class="film-grid-item-top">
+                      <div>
+                          <i class="pi pi-tag film-country-icon"></i>
+                          <span class="film-country">{{film.country}}</span>
+                      </div>
+
+                  </div>
+                  <div >
+                      <img [src]="film.photo" [alt]="film.name"/>
+                      <div class="film-name">{{film.name}}</div>
+                      <div class="film-description">{{film.description}}</div>
+                      <p-rating [ngModel]="film.rating" [readonly]="true" [cancel]="false"></p-rating>
+                  </div>
+                  <div class="film-grid-item-bottom">
+                      <span class="film-ticketPrice">${{film.ticketPrice}}</span>
+
+                  </div>
+              </div>
+          </div>
+      </ng-template>
+  </p-dataView>
+</div> -->
+
+
+
+
+<mat-paginator [length]="totalFilms"
+[pageSize]="pageSize"
+
+[showFirstLastButtons]="true"
+(page)="goToPage($event)"
+[pageIndex]="0"
+*ngIf="totalFilms > 0">
+</mat-paginator>
+

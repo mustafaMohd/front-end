@@ -1,0 +1,25 @@
+.full-width {
+    width: 100%;
+    margin: 0 auto;
+  }
+  /* .example-button-row button,
+  .example-button-row a {
+    margin: 10px;
+  } */
+
+
+  .actionButtons {
+
+    margin:  10px;
+    overflow: auto;
+    margin:0px auto;
+  
+  }
+  .title-center {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  /* .login-matcard {
+    margin: 15px;
+    
+  } */

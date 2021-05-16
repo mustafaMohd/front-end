@@ -1,0 +1,66 @@
+<div fxLayout="row" fxLayout.md="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10%" fxLayoutAlign="space-around center">
+
+
+    <mat-card fxFlex='50' class="login-matcard">
+  
+  <br>
+  
+      <mat-progress-bar mode="query" *ngIf="loading"></mat-progress-bar>
+      
+  
+      <h3 class="title-center"> Sign In</h3>
+  
+  
+      <form [formGroup]="loginForm" class="lgForm" (ngSubmit)="onSubmit()">
+  
+        
+      
+  
+        <mat-form-field  appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" [formControl]="email" required>
+          <mat-error *ngIf="email.hasError('required')"> Email is Required</mat-error>
+          
+          <mat-error *ngIf=" !email.hasError('required') && email.hasError('email')"> Must be an email</mat-error>
+        </mat-form-field>
+  
+  
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>password</mat-label>
+          <input matInput placeholder=" Password" [formControl]="password" [type]="hide ? 'text' : 'password'">
+          <mat-icon matSuffix (click)="hide = !hide" color='primary'>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <mat-error *ngIf="password.hasError('required')">Password is Required</mat-error>
+        </mat-form-field>
+  
+  
+  
+        <!-- put buttons here -->
+        <div class="example-button-row">
+          <button color="primary" class="full-width" type="submit" mat-raised-button color="primary"
+            [disabled]="loading">Login</button>
+        </div>
+      </form>
+      
+  
+       
+      <br>
+  <br>    
+       
+        
+      <a mat-stroked-button color="primary" class="primary" routerLink="/auth/register" >Register to become a Member</a>
+        <!-- <button color="primary" class="full-width" type="submit" mat-raised-button color="primary"
+        [disabled]="loading">Login</button>
+     -->
+     <br>
+      
+      
+  
+  
+    </mat-card>
+  
+  
+  </div>
+  
+  
+  
+  

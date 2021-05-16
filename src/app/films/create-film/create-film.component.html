@@ -1,0 +1,90 @@
+<p-dialog header=" Create" [(visible)]="displayNewDialog" (onHide)="onClose()" [focusOnShow]="false"
+  [dismissableMask]="true" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '300px'}">
+
+
+  <mat-progress-bar mode="query" *ngIf="loading"></mat-progress-bar>
+
+
+
+  <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" [formControl]="name" required>
+      <mat-error *ngIf="name.hasError('required')"> name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>description</mat-label>
+      <input matInput placeholder="description" [formControl]="description" required>
+      <mat-error *ngIf="description.hasError('required')"> description is required</mat-error>
+      <mat-error *ngIf="description.hasError('minlength') && !description.hasError('required')">
+        description Must be at least 6 letters</mat-error>
+      <mat-error *ngIf="description.hasError('maxlength')">
+        description with more than 40 characters.
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>rating</mat-label>
+      <input matInput placeholder="Enter rating" [formControl]="rating" required>
+      <mat-error *ngIf="rating.hasError('required')"> rating is Required</mat-error>
+      <mat-error *ngIf="!rating.hasError('required') && rating.hasError('min')"> must be greater than 1 </mat-error>
+      <mat-error *ngIf="!rating.hasError('required') && rating.hasError('max')"> must be less than or equal to 5
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+
+      <mat-label>ticketPrice</mat-label>
+      <input matInput placeholder="Enter ticketPrice" [formControl]="ticketPrice" required>
+      <mat-error *ngIf="ticketPrice.hasError('required')"> ticketPrice is Required</mat-error>
+      <mat-error *ngIf="!ticketPrice.hasError('required') && ticketPrice.hasError('min')"> must be greater than 1
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>releaseDate</mat-label>
+        <input matInput placeholder="releaseDate" [formControl]="releaseDate" required>
+        <mat-error *ngIf="releaseDate.hasError('required')"> releaseDate is required</mat-error>
+      </mat-form-field>
+
+
+      <div formArrayName="genre">
+
+        <div *ngFor="let g of genre.controls; index as idx" class="form-group">
+          <input [formControlName]="idx" placeholder="Enter a genre" class="form-control">
+
+          <button *ngIf="g" (click)="removeGenre(idx)" class="btn btn-danger">Delete</button>
+          <mat-error *ngIf="g.hasError('required')">
+            Genre is required.
+          </mat-error>
+        </div>
+      <div>
+          <button type="button" (click)="addNewGenre()" class="btn btn-success" [ngClass]="'pad'">Add More
+            genre</button>
+
+        </div>
+
+      </div>
+
+
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>country</mat-label>
+      <input matInput placeholder="country" [formControl]="country" required>
+      <mat-error *ngIf="country.hasError('required')"> country is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>photo</mat-label>
+      <input matInput placeholder="photo" [formControl]="photo" required>
+      <mat-error *ngIf="photo.hasError('required')"> photo is required</mat-error>
+    </mat-form-field>
+
+    <div class="example-button-row">
+      <button class="full-width" type="submit" mat-raised-button color="primary" [disabled]="loading">Add </button>
+    </div>
+  </form>
+</p-dialog>
