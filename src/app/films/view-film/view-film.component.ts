@@ -30,7 +30,7 @@ export class ViewFilmComponent implements OnInit {
       console.log(response);
 
       this.film = response;
-      this.location.replaceState(`/${this.film.slug}`);
+      this.location.replaceState(`films/${this.film.slug}`);
       this.filmRating = response.rating;
       this.loading = false;
     }, (error) =>
@@ -38,5 +38,8 @@ export class ViewFilmComponent implements OnInit {
        );
     });
     // this.location.replaceState(`/${this.film.slug}`);
+  }
+  back(): void {
+    this.location.back();
   }
 }

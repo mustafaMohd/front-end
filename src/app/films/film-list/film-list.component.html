@@ -5,6 +5,8 @@
 
   <div *ngFor="let film of films;" >
   <div >
+    <a [routerLink]="['/film', film.id]">
+
     <mat-card class="example-card">
       <mat-card-header>
         <mat-card-title>  {{film.name}}</mat-card-title>
@@ -18,20 +20,23 @@
         <p>
          Ticket Price:  {{film.ticketPrice}}
         </p>
-        <p>
-          Ticket Price:  {{film.id}}
-         </p>
+        <div *ngFor="let genre of film.genre;" >
+
+            {{genre}}
+
+        </div>
 
       </mat-card-content>
 
       <mat-card-actions>
-        <a [routerLink]="['/film', film.id]">
-          <button  mat-raised-button color="primary" >View</button>
-        </a>
 
-        <button  mat-raised-button color="primary"  >comment</button>
-      </mat-card-actions>
+       </mat-card-actions>
     </mat-card>
+
+    </a>
+
+    <app-comment   [film]="film"
+        ></app-comment>
   </div>
 
 </div>

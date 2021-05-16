@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/homeComponent';
 
 const routes: Routes = [
-  // {path: '',component: HomeComponent},
-  { path: '', loadChildren: () => import('./films/films.module').then(m => m.FilmsModule) },
+  {path: '', component: HomeComponent},
+  { path: 'films', loadChildren: () => import('./films/films.module').then(m => m.FilmsModule) },
   { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)},
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   // { path: 'films', loadChildren: () => import('./films/films.module').then(m => m.FilmsModule) }

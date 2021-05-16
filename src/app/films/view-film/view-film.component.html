@@ -21,12 +21,7 @@
       </mat-card-content>
 
       <mat-card-actions>
-        <!-- <a [routerLink]="['/film', film.id]">
-          <button  mat-raised-button color="primary" >View</button>
-        </a> -->
-        <app-comment   [film]="film"
-        ></app-comment>
-        <!-- <button  mat-raised-button color="primary"  >comment</button> -->
+        <button  (click)="back()" mat-raised-button color="primary"  >Back </button>
       </mat-card-actions>
     </mat-card>
   </div>
